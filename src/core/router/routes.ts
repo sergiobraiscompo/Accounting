@@ -1,16 +1,13 @@
 export const routesPrefixes = {
   root: "/",
   shops: "/shops",
-  categories: "/categories",
-  wishlist: "/wishlist",
+  movements: "/movements",
+  tickets: "/tickets",
 };
 
 export const appRoutes = {
   root: "/",
-  wishlist: routesPrefixes.wishlist,
+  movements: routesPrefixes.movements,
+  tickets: routesPrefixes.tickets,
   shops: routesPrefixes.shops,
-  categories: routesPrefixes.categories,
-  // movements: `${routesPrefixes.movements}/:id`,
-  // transfer: routesPrefixes.transfer,
-  // transferFromAccount: `${routesPrefixes.transfer}/:id`,
 };

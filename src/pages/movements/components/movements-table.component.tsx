@@ -1,14 +1,14 @@
 import React from "react";
-import classes from "./wishlist-table.component.module.css";
-import { itemVm } from "../wishlist.vm";
-import { WishlistItemComponent } from "./wishlist.component";
+import classes from "./movements-table.component.module.css";
+import { MovementVm } from "../movement.vm";
+import { MovementListComponent } from "./movements.component";
 
 interface Props {
-  Wishlist: itemVm[];
+  movements: MovementVm[];
 }
 
-export const WishlistTableComponent: React.FC<Props> = (props) => {
-  const { Wishlist } = props;
+export const MovementsTableComponent: React.FC<Props> = (props) => {
+  const { movements } = props;
 
   return (
     <>
@@ -21,8 +21,8 @@ export const WishlistTableComponent: React.FC<Props> = (props) => {
           <span className={classes.headerCell}>SALDO DISPONIBLE</span>
         </div>
 
-        {Wishlist.map((item) => (
-          <WishlistItemComponent key={item._id} wishlistItem={item} />
+        {movements.map((movement) => (
+          <MovementListComponent key={movement._id} movementList={movement} />
         ))}
       </div>
     </>

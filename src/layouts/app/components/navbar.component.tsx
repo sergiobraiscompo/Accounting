@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 
 export const NavbarComponent: React.FC = () => {
   const { pathname } = useLocation();
-  
+
   return (
     <nav className={classes.navbar}>
       <ul className={classes.list}>
@@ -14,29 +14,40 @@ export const NavbarComponent: React.FC = () => {
           className={
             pathname.startsWith(routesPrefixes.root)
               ? classes.selected
-              : ""
+              : classes.navItem
           }
         >
           <Link to={appRoutes.root}>Home</Link>
         </li>
-        <li>
-          <Link to={appRoutes.wishlist}>Home</Link>
-        </li>
+
         <li
           className={
             pathname.startsWith(routesPrefixes.shops)
               ? classes.selected
-              : ""
+              : classes.navItem
           }
         >
           <Link to={`${appRoutes.shops}`}>Shops</Link>
         </li>
+
         <li
           className={
-            pathname.startsWith(routesPrefixes.categories) ? classes.selected : ""
+            pathname.startsWith(routesPrefixes.movements)
+              ? classes.selected
+              : classes.navItem
           }
         >
-          <Link to={appRoutes.categories}>Categories</Link>
+          <Link to={appRoutes.movements}>Movements</Link>
+        </li>
+
+        <li
+          className={
+            pathname.startsWith(routesPrefixes.tickets)
+              ? classes.selected
+              : classes.navItem
+          }
+        >
+          <Link to={appRoutes.tickets}>Tickets</Link>
         </li>
       </ul>
     </nav>

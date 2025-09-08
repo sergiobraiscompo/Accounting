@@ -1,20 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { appRoutes } from "@/core/router";
-import { WishlistPage } from "@/pages";
+import { MovementsPage } from "@/pages/movements/movements.page";
+import { HomePage } from "@/pages/home";
+import { TicketsPage } from "@/pages/tickets";
 
 export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={appRoutes.root} element={<WishlistPage />} />
-        {/* <Route path={appRoutes.createAccount} element={<CreateAccountPage />} />
-        <Route path={appRoutes.editAccount} element={<CreateAccountPage />} />
-        <Route path={appRoutes.movements} element={<MovementListPage />} />
-        <Route path={appRoutes.transfer} element={<TransferPage />} />
-        <Route
-          path={appRoutes.transferFromAccount}
-          element={<TransferPage />}
-        /> */}
+        <Route path={appRoutes.root} element={<HomePage />} />
+        <Route path={appRoutes.movements} element={<MovementsPage />} />
+        <Route path={appRoutes.tickets} element={<TicketsPage />} />
+        {/* <Route path={appRoutes.shops} element={<ShopsPage />} /> */}
       </Routes>
     </BrowserRouter>
   );

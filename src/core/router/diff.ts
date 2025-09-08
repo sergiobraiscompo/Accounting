@@ -1,6 +1,7 @@
 export const appRoutes = {
     root: "/",
-    wishlist: "/wishlist",
+    movements: "/movements",
+    tickets: "/tickets",
     shops: "/shops",
     // CreateAccount: "/create-account",
     // movements: "/movements/:id",

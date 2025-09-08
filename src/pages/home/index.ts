@@ -1,1 +1,1 @@
-export * from "./wishlist.page";
+export * from "./home.page"

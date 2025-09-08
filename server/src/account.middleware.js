@@ -14,7 +14,15 @@ const accountMiddleware = (req, res, next) => {
 };
 
 module.exports = (req, res, next) => {
-  if (req.path === '/wishlist') {
+  if (req.path === '/movements') {
+    accountMiddleware(req, res, next);
+  } else {
+    next();
+  }
+};
+
+module.exports = (req, res, next) => {
+  if (req.path === '/tickets') {
     accountMiddleware(req, res, next);
   } else {
     next();
