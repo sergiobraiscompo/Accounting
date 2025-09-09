@@ -3,6 +3,7 @@
   height: fit-content;
   border: white 1px solid;
   padding-top: 1px;
+  position: sticky;
 }
 
 .list {

@@ -1,0 +1,62 @@
+.formWindow {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  margin: 1% 25%;
+  height: fit-content;
+  width: fit-content;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  background: var(--primary_color);
+}
+
+.formTitle h1 {
+  color: white;
+  background: var(--element_background_color);
+  width: 500px;
+}
+
+.formField {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: 10px;
+  align-items: center;
+  width: fit-content;
+}
+
+.buttonContainer p {
+  margin-right: 20px;
+  font-size: xx-large;
+  font-weight: 300;
+  color: var(--primary_color);
+}
+
+.buttonAdd {
+  border: black 1px solid;
+  align-items: center;
+  border: gray 1px solid;
+  border-radius: 8px;
+  background: var(--element_background_color);
+}
+
+.buttonAdd span {
+  color: white;
+  font-size: 20px;
+}
+
+.movementsArray {
+  margin: 1px;
+  background: var(--primary_color);
+  min-height: 10px;
+}

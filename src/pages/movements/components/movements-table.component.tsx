@@ -14,11 +14,10 @@ export const MovementsTableComponent: React.FC<Props> = (props) => {
     <>
       <div className={classes.gridContainer}>
         <div className={classes.headerTable}>
-          <span className={classes.headerCell}>FECHA</span>
-          <span className={classes.headerCell}>FECHA VALOR</span>
-          <span className={classes.headerCell}>DESCRIPCIÓN</span>
-          <span className={classes.headerCell}>IMPORTE</span>
-          <span className={classes.headerCell}>SALDO DISPONIBLE</span>
+          <span className={classes.headerCell}>Amount</span>
+          <span className={classes.headerCell}>Movement Type</span>
+          <span className={classes.headerCell}>Transaction Type</span>
+          <span className={classes.headerCell}>Date</span>
         </div>
 
         {movements.map((movement) => (

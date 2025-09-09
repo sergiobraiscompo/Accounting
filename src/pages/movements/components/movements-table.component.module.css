@@ -1,19 +1,23 @@
 .grid-container {
-  max-width: 100%;
-  overflow-x: auto;
+  /* overflow-x: auto; */
+  /* margin: auto; */
+  justify-self: center;
+  width: fit-content;
 }
 
 .header-table {
   display: grid;
   text-align: center;
-  grid-template-columns: 10.7% 14% 25% 20% 30% 1fr;
+  grid-template-columns: 25% 1fr 1fr 1fr 1fr;
   gap: 1px;
+  align-self: center;
+  margin: 0 ;
 }
 
 .header-cell {
   padding: 10px;
-  color: var(--table-header-color);
-  background-color: var(--table-header-background-color);
+  color: white;
+  background-color: var(--element_background_color);
   font-size: var(--table-header-font-size);
   font-weight: var(--table-header-font-weight);
 }
