@@ -13,8 +13,6 @@ const openForm = () => {
   );
 }
 
-
-
 export const MovementsPage: React.FC = () => {
   const [movements, setMovementList] = React.useState<Movement[]>([]);
   const { id } = useParams<{ id: string }>();

@@ -3,7 +3,7 @@
   flex-direction: column;
   position: fixed;
   z-index: 1;
-  margin: 1% 25%;
+  /* margin: 1% 25%; */
   height: fit-content;
   width: fit-content;
   align-items: center;
