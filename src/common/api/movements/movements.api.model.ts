@@ -11,7 +11,7 @@ enum TransactionType {
 
 export interface Movement {
   "_id": number,
-  "quantity": number,
+  "amount": number,
   "movementType": MovementType,
   "transactionType": TransactionType,
   "date": Date

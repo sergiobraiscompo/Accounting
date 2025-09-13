@@ -6,7 +6,7 @@ export const mapMovementListFromApiToVm = (
 ): viewModel.MovementVm[] =>
   movementList.map((movement) => ({
     _id: movement._id,
-    quantity: movement.quantity,
+    amount: movement.amount,
     movementType: movement.movementType,
     transactionType: movement.transactionType,
     date: movement.date

@@ -1,17 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { AppLayout } from "@/layouts";
-import { FormComponent } from "@/layouts/app/components";
 import { Movement } from "../../common/api/movements/movements.api.model";
-import { MovementsTableComponent } from "./components";
 import { mapMovementListFromApiToVm } from "./movements.mapper";
-import classes from "./movements.page.module.css";
-
-const openForm = () => {
-  return (
-    <FormComponent/>
-  );
-}
+import { Box, Button, Container, Typography } from "@mui/material";
 
 export const MovementsPage: React.FC = () => {
   const [movements, setMovementList] = React.useState<Movement[]>([]);
@@ -29,20 +21,24 @@ export const MovementsPage: React.FC = () => {
 
   return (
     <AppLayout>
-      <div className={classes.onWorkingAdvice}>
-        <h1>Page Under construction</h1>
-      </div>
-      <div>
-        <div className={classes.header}>
-          <h1>Your Movements</h1>
-          <div className={classes.buttonContainer}>
-            <p>Add Movement</p>
-            <button onClick={openForm} className={classes.buttonAdd}><span>+</span></button>
-          </div>
-        </div>
-        <MovementsTableComponent movements={movements} />
-      </div>
-      <FormComponent />
+    <Container sx={{
+      display: "flex", flexDirection: "row",
+      ":hover": { bgcolor: "purple", color: "white" }, p: "1", bgcolor: "tomato", height: "fit-content", alignContent: "center", justifyContent: "center"
+    }}>
+      <Typography variant="h1" sx={{ my: 4, textAlign: "center", color: "primary.main" }}>
+        Your movements list
+      </Typography>
+      
+      <Button sx={{
+        bgcolor: "blue", color: "white", ":hover": { bgcolor: "orange", color: "purple" }
+      }}>
+        +
+      </Button>
+      </Container>
+
+      <Box>
+
+      </Box>
     </AppLayout>
   );
 };

@@ -5,7 +5,7 @@
 //   font-weight: 400;
 
 import { DefaultContainerStyle } from "@/main-style";
-import { Card, CardHeader, Container, Typography } from "@mui/material";
+import { Container, Icon } from "@mui/material";
 
 //   /* colors */
 //   --element-background-color: #9600ff;
@@ -51,13 +51,21 @@ import { Card, CardHeader, Container, Typography } from "@mui/material";
 //   }
 // } */
 
+const headerParameters = {
+  DefaultContainerStyle,
+  bgcolor: "background_color.main",
+  borderColor: "border_color",
+  outerHeight: 50
+};
+
+const iconParameters = {
+  color: "white",
+}
+
 export const HeaderStyle: React.FC = () => {
   return (
-    <Container sx={{DefaultContainerStyle}, }>
-      <Typography variant="h2">
-        h2. Heading
-      </Typography>
+    <Container sx={headerParameters}>
+      <Icon sx={iconParameters}>+</Icon>
     </Container>
   );
 };
-

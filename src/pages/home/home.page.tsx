@@ -1,45 +1,56 @@
 import { AppLayout } from "@/layouts";
-import { Box, Button, Container, Paper, Typography } from "@mui/material";
+import * as React from "react";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Checkbox from "@mui/material/Checkbox";
 
-const services = ["Service 1", "Service 2", "Service 3"]
-
+export default function CheckboxList() {}
 export const HomePage: React.FC = () => {
+  const [checked, setChecked] = React.useState([0]);
+
+  const handleToggle = (value: number) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
+
   return (
     <AppLayout>
-      <Container sx={{
-        display: "flex", flexDirection: "row",
-        ":hover": { bgcolor: "purple", color: "white" }, p: "1", bgcolor: "tomato", height: "fit-content", alignContent: "center", justifyContent: "center"
-      }}>
-        <Typography variant="h1" sx={{ my: 4, textAlign: "center", color: "primary.main" }}>
-          h1. Heading
-        </Typography>
-        <Typography variant="h2">
-          h2. Heading
-        </Typography>
-        <Button sx={{
-          bgcolor: "blue", color: "white", ":hover": { bgcolor: "orange", color: "purple" }
-        }}>
-          +
-        </Button>
-      </Container>
-
-      <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, justifyContent: "space-between", gap: 4 }} >
-        {services.map((service) => (
-          <Paper elevation={3}>
-            <Typography sx={{ mt: 10 }} variant="h3">
-              {service}
-            </Typography>
-
-            <Typography>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam saepe molestiae error omnis, facilis quos est quas eaque eum sapiente perferendis nulla quaerat ratione velit pariatur illum fugiat adipisci aliquid?
-            </Typography>
-
-            <Button variant="contained" sx={{ width: { xs: 1, md: 320 } }}>
-              View Description
-            </Button>
-          </Paper>
-        ))}
-      </Box>
-    </AppLayout >
+      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+        {[0, 1, 2, 3].map((value) => {
+          const labelId = `checkbox-list-label-${value}`;
+          return (
+            <ListItem key={value} disablePadding>
+              <ListItemButton
+                role={undefined}
+                onClick={handleToggle(value)}
+                dense
+              >
+                <ListItemIcon>
+                  <Checkbox
+                    edge="start"
+                    checked={checked.includes(value)}
+                    tabIndex={-1}
+                    disableRipple
+                    inputProps={{ "aria-labelledby": labelId }}
+                  />
+                </ListItemIcon>
+                <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
+    </AppLayout>
   );
 };

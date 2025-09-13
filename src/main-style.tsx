@@ -10,6 +10,7 @@ declare module '@mui/material/styles' {
   interface PaletteOptions {
     hover_color: PaletteOptions['primary'];
     border_color: PaletteOptions['primary'];
+    background_color: PaletteOptions['primary'];
   }
 }
 
@@ -25,8 +26,8 @@ export const theme: Theme = createTheme({
     error: {
       main: "#f44336"
     },
-    background: {
-      default: "#9600ff"
+    background_color: {
+      main: "#9600ff"
     },
     hover_color: {
       main: "rgb(97, 0, 0)",
@@ -59,12 +60,12 @@ export const theme: Theme = createTheme({
 
 export const DefaultContainerStyle = {
   display: "flex",
-  flexDirection: "row",
-  ":hover": { bgcolor: "purple", color: "white" },
-  p: "1", bgcolor: "tomato",
+  p: "1", 
+  bgcolor: "background_color",
   height: "fit-content",
   alignContent: "center",
-  justifyContent: "center"
+  justifyContent: "center",
+  ":hover": { bgcolor: "purple", color: "white" },
 };
 
 
