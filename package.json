@@ -6,15 +6,12 @@
   "scripts": {
     "prestart": "node ./create-dev-env.js && docker compose down --remove-orphans",
     "start": "run-p -l type-check:watch start:dev start:local-db",
-    "dev": "run-p -l start:vite start:mock-server",
+    "dev": "run-p -l start:vite",
     "start:vite": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start:mock-server": "cd ./server && npm start",
-    "start:local-db": "docker compose up -d",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "postinstall": "cd ./server && npm install"
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@types/validator": "^13.12.2",
