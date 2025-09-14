@@ -1,16 +1,28 @@
 import {
-  createTheme, Theme
+  createTheme,
+  Tabs,
+  Theme,
+  Typography,
+  Box,
+  Container,
+  BottomNavigation,
+  BottomNavigationAction,
 } from "@mui/material";
+import * as React from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Palette {
-    custom_color: Palette['primary'];
+    custom_color: Palette["primary"];
   }
 
   interface PaletteOptions {
-    hover_color: PaletteOptions['primary'];
-    border_color: PaletteOptions['primary'];
-    background_color: PaletteOptions['primary'];
+    hover_color: PaletteOptions["primary"];
+    border_color: PaletteOptions["primary"];
+    background_color: PaletteOptions["primary"];
   }
 }
 
@@ -24,23 +36,20 @@ export const theme: Theme = createTheme({
       main: "rgb(148, 0, 0)",
     },
     error: {
-      main: "#f44336"
+      main: "#f44336",
     },
     background_color: {
-      main: "#9600ff"
+      main: "#9600ff",
     },
     hover_color: {
       main: "rgb(97, 0, 0)",
     },
     border_color: {
-      main: "#e5e5e5"
-    }
+      main: "#e5e5e5",
+    },
   },
   typography: {
-    fontFamily: [
-      "Open Sans",
-      "sans - serif"
-    ].join(","),
+    fontFamily: ["Open Sans", "sans - serif"].join(","),
     fontSize: 12,
     fontWeightRegular: 400,
     h1: {
@@ -49,27 +58,79 @@ export const theme: Theme = createTheme({
     },
     h2: {
       fontsize: "1.75rem",
-      fontweigth: "600"
+      fontweigth: "600",
     },
     h3: {
       fontsize: "1.5rem",
-      fontweigth: "600"
+      fontweigth: "600",
     },
-  }
+  },
 });
 
-export const DefaultContainerStyle = {
-  display: "flex",
-  p: "1", 
-  bgcolor: "background_color",
-  height: "fit-content",
-  alignContent: "center",
-  justifyContent: "center",
-  ":hover": { bgcolor: "purple", color: "white" },
-};
+// index.js
 
+export default function HomeComponent() {
+  const [value, setValue] = React.useState(0);
 
+  return (
+    <ThemeProvider
+      theme={{
+        palette: {
+          primary: {
+            main: "#007FFF",
+            dark: "#0066CC",
+          },
+        },
+      }}
+    >
+      {/* Body */}
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          bgcolor: "background-color",
+          minHeight: 540,
+          borderColor: "black",
+          borderStyle: "solid",
+        }}
+      >
+        <Typography>Text</Typography>
+      </Container>
 
+      {/* Navigation bar */}
+      <Box sx={{ width: 500 }}>
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(
+            {
+              /*event*/
+            },
+            newValue
+          ) => {
+            setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        </BottomNavigation>
+      </Box>
+    </ThemeProvider>
+  );
+}
+
+// // Components Styles
+// export const DefaultContainerStyle = {
+//   display: "flex",
+//   p: "1",
+//   bgcolor: "background_color",
+//   height: "fit-content",
+//   alignContent: "center",
+//   justifyContent: "center",
+//   ":hover": { bgcolor: "purple", color: "white" },
+// };
 //   <Button sx={{
 //     bgcolor: "blue", color: "white", ":hover": { bgcolor: "orange", color: "purple" }
 //   }}>
