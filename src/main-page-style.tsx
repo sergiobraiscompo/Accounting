@@ -1,18 +1,21 @@
 import {
   createTheme,
-  Tabs,
   Theme,
   Typography,
   Box,
   Container,
   BottomNavigation,
   BottomNavigationAction,
+  Paper,
 } from "@mui/material";
 import * as React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { purple } from "@mui/material/colors";
+import { Fullscreen, Height, Margin } from "@mui/icons-material";
+import { isFullWidth } from "validator";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -25,6 +28,7 @@ declare module "@mui/material/styles" {
     background_color: PaletteOptions["primary"];
   }
 }
+
 
 // Design themes
 export const theme: Theme = createTheme({
@@ -67,40 +71,80 @@ export const theme: Theme = createTheme({
   },
 });
 
+const bodyDesign = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  bgcolor: "black",
+  minHeight: 540,
+  minWidth: 960,
+  Height: "100%",
+  Width: "100%",
+  borderColor: "black",
+  borderStyle: "solid",
+}
+
+const paperBoxDesign = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  bgcolor: "purple",
+  height: 50,
+  borderColor: "white",
+  borderStyle: "solid",
+  Margin: 10
+}
+
+const paperItem = {
+  justifyContent: "space-between",
+  bgcolor: "orange",
+  minHeight: 40,
+  minWidth: 40,
+  borderColor: "white",
+  borderStyle: "solid",
+}
+
+const bottomNavDesign = {
+  justifyContent: "space-between",
+  bgcolor: "purple",
+  color: "white",
+  minHeight: 40,
+  minWidth: 40,
+  borderColor: "white",
+  borderStyle: "solid",
+}
+
+
 // index.js
 
 export default function HomeComponent() {
   const [value, setValue] = React.useState(0);
 
   return (
-    <ThemeProvider
-      theme={{
-        palette: {
-          primary: {
-            main: "#007FFF",
-            dark: "#0066CC",
-          },
-        },
-      }}
+    // Body
+    <Container sx={bodyDesign}
     >
-      {/* Body */}
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          bgcolor: "background-color",
-          minHeight: 540,
-          borderColor: "black",
-          borderStyle: "solid",
-        }}
-      >
-        <Typography>Text</Typography>
-      </Container>
+      {/* First Paper row */}
+      <Box sx={paperBoxDesign}>
+        <Paper elevation={12} sx={paperItem}>
+
+        </Paper>
+        <Paper elevation={12} sx={paperItem}  >
+
+        </Paper>
+        <Paper elevation={12} sx={paperItem}>
+
+        </Paper>
+        <Paper elevation={12} sx={paperItem}>
+
+        </Paper>
+      </Box>
 
       {/* Navigation bar */}
-      <Box sx={{ width: 500 }}>
+      <Box sx={{ minWidth: 960 }}>
         <BottomNavigation
+          sx={bottomNavDesign}
           showLabels
           value={value}
           onChange={(
@@ -117,8 +161,9 @@ export default function HomeComponent() {
           <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>
       </Box>
-    </ThemeProvider>
-  );
+    </Container >
+
+  )
 }
 
 // // Components Styles
