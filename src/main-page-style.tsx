@@ -1,7 +1,6 @@
 import {
   createTheme,
   Theme,
-  Typography,
   Box,
   Container,
   BottomNavigation,
@@ -9,13 +8,20 @@ import {
   Paper,
 } from "@mui/material";
 import * as React from "react";
+import { sizing } from '@mui/system';
 import { ThemeProvider } from "@mui/material/styles";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { purple } from "@mui/material/colors";
-import { Fullscreen, Height, Margin } from "@mui/icons-material";
-import { isFullWidth } from "validator";
+import { alignProperty } from "@mui/material/styles/cssUtils";
+import {
+  AlignVerticalBottom,
+  BorderAllRounded,
+  Height,
+  Margin,
+  RadioRounded,
+} from "@mui/icons-material";
+import zIndex from "@mui/material/styles/zIndex";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -28,7 +34,6 @@ declare module "@mui/material/styles" {
     background_color: PaletteOptions["primary"];
   }
 }
-
 
 // Design themes
 export const theme: Theme = createTheme({
@@ -71,50 +76,51 @@ export const theme: Theme = createTheme({
   },
 });
 
+// Body
 const bodyDesign = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  bgcolor: "black",
-  minHeight: 540,
-  minWidth: 960,
-  Height: "100%",
-  Width: "100%",
+  bgcolor: "purple",
   borderColor: "black",
+  Height: 1,
+  Width: 1,
   borderStyle: "solid",
-}
+};
 
+// Items display
 const paperBoxDesign = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   bgcolor: "purple",
-  height: 50,
   borderColor: "white",
   borderStyle: "solid",
-  Margin: 10
-}
+  height: "fit-content"};
 
-const paperItem = {
+const paperItemDesign = {
   justifyContent: "space-between",
   bgcolor: "orange",
-  minHeight: 40,
-  minWidth: 40,
+  height: 100,
+  width: 100,
   borderColor: "white",
   borderStyle: "solid",
-}
+};
 
 const bottomNavDesign = {
-  justifyContent: "space-between",
-  bgcolor: "purple",
-  color: "white",
-  minHeight: 40,
-  minWidth: 40,
+  justifyContent: "space-around",
+  bgcolor: "black",
   borderColor: "white",
   borderStyle: "solid",
-}
+  color: "white",
+  width: 1,
+  borderRadius: 4,
+};
 
+const iconsDesign = {
+  color: "white",
+  bgcolor: "cyan",
+  borderRadius: 10,
+};
 
 // index.js
 
@@ -123,22 +129,40 @@ export default function HomeComponent() {
 
   return (
     // Body
-    <Container sx={bodyDesign}
-    >
+    <Container sx={bodyDesign}>
+
       {/* First Paper row */}
       <Box sx={paperBoxDesign}>
-        <Paper elevation={12} sx={paperItem}>
-
-        </Paper>
-        <Paper elevation={12} sx={paperItem}  >
-
-        </Paper>
-        <Paper elevation={12} sx={paperItem}>
-
-        </Paper>
-        <Paper elevation={12} sx={paperItem}>
-
-        </Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+      </Box>
+      {/* Second Paper row */}
+      <Box sx={paperBoxDesign}>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+      </Box>
+      {/* Third Paper row */}
+      <Box sx={paperBoxDesign}>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Paper elevation={12} sx={paperItemDesign}></Paper>
       </Box>
 
       {/* Navigation bar */}
@@ -156,14 +180,25 @@ export default function HomeComponent() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction
+            sx={iconsDesign}
+            label="Recents"
+            icon={<RestoreIcon />}
+          />
+          <BottomNavigationAction
+            sx={iconsDesign}
+            label="Favorites"
+            icon={<FavoriteIcon />}
+          />
+          <BottomNavigationAction
+            sx={iconsDesign}
+            label="Nearby"
+            icon={<LocationOnIcon />}
+          />
         </BottomNavigation>
       </Box>
-    </Container >
-
-  )
+    </Container>
+  );
 }
 
 // // Components Styles
