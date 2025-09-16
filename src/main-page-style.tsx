@@ -6,9 +6,10 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Paper,
+  Typography,
 } from "@mui/material";
 import * as React from "react";
-import { sizing } from '@mui/system';
+import { borderColor, display, flex, flexDirection, height, justifyContent, padding, sizing } from '@mui/system';
 import { ThemeProvider } from "@mui/material/styles";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -90,22 +91,40 @@ const bodyDesign = {
 // Items display
 const paperBoxDesign = {
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   justifyContent: "space-between",
   bgcolor: "purple",
   borderColor: "white",
   borderStyle: "solid",
-  height: "fit-content"};
+  height: 1,
+  width: "fit-content",
+  padding: 1
+}
+
+const paperBoxTitleDesign = {
+  color: "white"
+}
 
 const paperItemDesign = {
   justifyContent: "space-between",
   bgcolor: "orange",
-  height: 100,
-  width: 100,
+  height: 50,
+  width: 60,
   borderColor: "white",
   borderStyle: "solid",
-};
+}
 
+const paperItemsContainerDesign = {
+  display: "flex",
+  flexDirection: "row",
+  borderColor: "white",
+  justifyContent: "space-between",
+  height: "fit-content",
+  width: 1,
+  padding: 1,
+}
+
+// Bottom navigation bar
 const bottomNavDesign = {
   justifyContent: "space-around",
   bgcolor: "black",
@@ -113,7 +132,7 @@ const bottomNavDesign = {
   borderStyle: "solid",
   color: "white",
   width: 1,
-  borderRadius: 4,
+  borderRadius: 4
 };
 
 const iconsDesign = {
@@ -133,36 +152,54 @@ export default function HomeComponent() {
 
       {/* First Paper row */}
       <Box sx={paperBoxDesign}>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Typography variant="h3" sx={paperBoxTitleDesign}>
+          Items
+        </Typography>
+        <Container sx={paperItemsContainerDesign}>
+
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+        </Container>
       </Box>
       {/* Second Paper row */}
       <Box sx={paperBoxDesign}>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Typography variant="h3" sx={paperBoxTitleDesign}>
+          Items
+        </Typography>
+        <Container sx={paperItemsContainerDesign}>
+
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+        </Container>
       </Box>
       {/* Third Paper row */}
       <Box sx={paperBoxDesign}>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
-        <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Typography variant="h3" sx={paperBoxTitleDesign}>
+          Items
+        </Typography>
+        <Container sx={paperItemsContainerDesign}>
+
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+          <Paper elevation={12} sx={paperItemDesign}></Paper>
+        </Container>
       </Box>
 
       {/* Navigation bar */}
