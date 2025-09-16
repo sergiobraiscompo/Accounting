@@ -7,9 +7,21 @@ import {
   BottomNavigationAction,
   Paper,
   Typography,
+  Card,
 } from "@mui/material";
 import * as React from "react";
-import { borderColor, display, flex, flexDirection, height, justifyContent, padding, sizing } from '@mui/system';
+import {
+  bgcolor,
+  borderBottomColor,
+  borderColor,
+  display,
+  flex,
+  flexDirection,
+  height,
+  justifyContent,
+  padding,
+  sizing,
+} from "@mui/system";
 import { ThemeProvider } from "@mui/material/styles";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -18,6 +30,7 @@ import { alignProperty } from "@mui/material/styles/cssUtils";
 import {
   AlignVerticalBottom,
   BorderAllRounded,
+  BorderStyle,
   Height,
   Margin,
   RadioRounded,
@@ -82,10 +95,8 @@ const bodyDesign = {
   display: "flex",
   flexDirection: "column",
   bgcolor: "purple",
-  borderColor: "black",
-  Height: 1,
-  Width: 1,
-  borderStyle: "solid",
+  Height: 1080,
+  Width: 1920,
 };
 
 // Items display
@@ -93,25 +104,41 @@ const paperBoxDesign = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  bgcolor: "purple",
-  borderColor: "white",
   borderStyle: "solid",
+  borderColor: "white",
+  bgcolor: "purple",
   height: 1,
-  width: "fit-content",
-  padding: 1
-}
+  padding: 1,
+  my: 2.5
+};
 
 const paperBoxTitleDesign = {
-  color: "white"
-}
+  color: "white",
+  borderBottom: "solid",
+  borderBottomColor: "white",
+  mb: 5,
+};
 
 const paperItemDesign = {
   justifyContent: "space-between",
   bgcolor: "orange",
-  height: 50,
-  width: 60,
+  height: 100,
+  width: 120,
   borderColor: "white",
   borderStyle: "solid",
+  mx: 5,
+  zIndex: 1
+};
+
+const cardItemDesign = {
+  height: 100,
+  width: 120,
+  borderColor: "white",
+  borderStyle: "solid",
+};
+
+const cardItemImageDesign =  {
+  bgcolor: "blue"
 }
 
 const paperItemsContainerDesign = {
@@ -122,7 +149,7 @@ const paperItemsContainerDesign = {
   height: "fit-content",
   width: 1,
   padding: 1,
-}
+};
 
 // Bottom navigation bar
 const bottomNavDesign = {
@@ -132,7 +159,7 @@ const bottomNavDesign = {
   borderStyle: "solid",
   color: "white",
   width: 1,
-  borderRadius: 4
+  borderRadius: 4,
 };
 
 const iconsDesign = {
@@ -149,14 +176,12 @@ export default function HomeComponent() {
   return (
     // Body
     <Container sx={bodyDesign}>
-
       {/* First Paper row */}
-      <Box sx={paperBoxDesign}>
-        <Typography variant="h3" sx={paperBoxTitleDesign}>
+      <Box boxShadow="unset" sx={paperBoxDesign}>
+        <Typography variant="h5" sx={paperBoxTitleDesign}>
           Items
         </Typography>
         <Container sx={paperItemsContainerDesign}>
-
           <Paper elevation={12} sx={paperItemDesign}></Paper>
           <Paper elevation={12} sx={paperItemDesign}></Paper>
           <Paper elevation={12} sx={paperItemDesign}></Paper>
@@ -167,30 +192,30 @@ export default function HomeComponent() {
           <Paper elevation={12} sx={paperItemDesign}></Paper>
         </Container>
       </Box>
+
+      {/* Card row */}
+      <Box boxShadow={"unset"} sx={paperBoxDesign}>
+        <Typography variant="h5" sx={paperBoxTitleDesign}>
+          Items
+        </Typography>
+        <Container sx={paperItemsContainerDesign}>
+          <Card elevation={12} sx={cardItemDesign}><Card></Card></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+          <Card elevation={12} sx={cardItemDesign}></Card>
+        </Container>
+      </Box>
+
       {/* Second Paper row */}
-      <Box sx={paperBoxDesign}>
-        <Typography variant="h3" sx={paperBoxTitleDesign}>
+      <Box boxShadow={"unset"} sx={paperBoxDesign}>
+        <Typography variant="h5" sx={paperBoxTitleDesign}>
           Items
         </Typography>
         <Container sx={paperItemsContainerDesign}>
-
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-        </Container>
-      </Box>
-      {/* Third Paper row */}
-      <Box sx={paperBoxDesign}>
-        <Typography variant="h3" sx={paperBoxTitleDesign}>
-          Items
-        </Typography>
-        <Container sx={paperItemsContainerDesign}>
-
           <Paper elevation={12} sx={paperItemDesign}></Paper>
           <Paper elevation={12} sx={paperItemDesign}></Paper>
           <Paper elevation={12} sx={paperItemDesign}></Paper>
