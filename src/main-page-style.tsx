@@ -8,12 +8,20 @@ import {
   Paper,
   Typography,
   Card,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Divider,
+  Link,
 } from "@mui/material";
 import * as React from "react";
 import {
   bgcolor,
   borderBottomColor,
   borderColor,
+  borderRadius,
+  color,
+  columnGap,
   display,
   flex,
   flexDirection,
@@ -21,6 +29,7 @@ import {
   justifyContent,
   padding,
   sizing,
+  width,
 } from "@mui/system";
 import { ThemeProvider } from "@mui/material/styles";
 import RestoreIcon from "@mui/icons-material/Restore";
@@ -31,6 +40,7 @@ import {
   AlignVerticalBottom,
   BorderAllRounded,
   BorderStyle,
+  BorderTopRounded,
   Height,
   Margin,
   RadioRounded,
@@ -88,19 +98,68 @@ export const theme: Theme = createTheme({
       fontweigth: "600",
     },
   },
-});
+})
 
 // Body
 const bodyDesign = {
   display: "flex",
   flexDirection: "column",
+  justifyContent: "space-between",
   bgcolor: "purple",
-  Height: 1080,
-  Width: 1920,
-};
+  height: "fit-content",
+  width: 1,
+}
 
-// Items display
-const paperBoxDesign = {
+// icons
+const linkDesign = {
+  color: "white",
+  borderBottom: "solid 1px",
+  borderColor: "white"
+}
+
+const iconsDesign = {
+  color: "white",
+  bgcolor: "cyan",
+  borderRadius: 10,
+}
+
+
+// Accordion
+const accordionDesign = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  bgcolor: "black",
+  height: 1,
+  width: 1,
+  color: "white"
+}
+
+const accordionSummaryDesign = {
+  borderStyle: "solid",
+  borderColor: "white",
+  display: "flex",
+  flexDirection: "column",
+  width: 1
+}
+
+const accordionDividerStyle = {
+  p: 0,
+  borderRadius: 5,
+  bgcolor: "white",
+}
+const accordionDetailsDesign = {
+  bgcolor: "white",
+}
+
+const accordionTitleDesign = {
+  color: "white",
+  mb: 5,
+}
+
+
+// Box
+const boxDesign = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
@@ -110,16 +169,9 @@ const paperBoxDesign = {
   height: 1,
   padding: 1,
   my: 2.5
-};
+}
 
-const paperBoxTitleDesign = {
-  color: "white",
-  borderBottom: "solid",
-  borderBottomColor: "white",
-  mb: 5,
-};
-
-const paperItemDesign = {
+const paperDesign = {
   justifyContent: "space-between",
   bgcolor: "orange",
   height: 100,
@@ -127,21 +179,18 @@ const paperItemDesign = {
   borderColor: "white",
   borderStyle: "solid",
   mx: 5,
-  zIndex: 1
-};
+  zIndex: 1,
+  position: "fixed-bottom"
+}
 
-const cardItemDesign = {
+const cardDesign = {
   height: 100,
   width: 120,
   borderColor: "white",
   borderStyle: "solid",
-};
-
-const cardItemImageDesign =  {
-  bgcolor: "blue"
 }
 
-const paperItemsContainerDesign = {
+const itemsContainerDesign = {
   display: "flex",
   flexDirection: "row",
   borderColor: "white",
@@ -149,7 +198,8 @@ const paperItemsContainerDesign = {
   height: "fit-content",
   width: 1,
   padding: 1,
-};
+}
+
 
 // Bottom navigation bar
 const bottomNavDesign = {
@@ -160,15 +210,11 @@ const bottomNavDesign = {
   color: "white",
   width: 1,
   borderRadius: 4,
-};
+  zTop: 1,
+  position: 
+}
 
-const iconsDesign = {
-  color: "white",
-  bgcolor: "cyan",
-  borderRadius: 10,
-};
 
-// index.js
 
 export default function HomeComponent() {
   const [value, setValue] = React.useState(0);
@@ -177,53 +223,82 @@ export default function HomeComponent() {
     // Body
     <Container sx={bodyDesign}>
       {/* First Paper row */}
-      <Box boxShadow="unset" sx={paperBoxDesign}>
-        <Typography variant="h5" sx={paperBoxTitleDesign}>
-          Items
-        </Typography>
-        <Container sx={paperItemsContainerDesign}>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-        </Container>
-      </Box>
+      <Accordion sx={accordionDesign} defaultExpanded>
+
+        <AccordionSummary
+          aria-controls="panel1-content"
+          id="panel1-header"
+          sx={accordionSummaryDesign}
+        >
+          <Typography variant="h5" sx={accordionTitleDesign}>
+            Accordion
+          </Typography>
+          <Divider orientation="horizontal" variant="middle" component={"li"} sx={accordionDividerStyle} />
+
+        </AccordionSummary>
+
+        <AccordionDetails sx={accordionDetailsDesign}>
+          <Container sx={itemsContainerDesign}>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+            <Paper elevation={12} sx={paperDesign}></Paper>
+          </Container>
+        </AccordionDetails>
+
+        <Link sx={linkDesign} href="#">See all</Link>
+      </Accordion>
 
       {/* Card row */}
-      <Box boxShadow={"unset"} sx={paperBoxDesign}>
-        <Typography variant="h5" sx={paperBoxTitleDesign}>
+      <Box boxShadow={"unset"} sx={boxDesign}>
+        <Typography variant="h5" sx={accordionTitleDesign}>
           Items
         </Typography>
-        <Container sx={paperItemsContainerDesign}>
-          <Card elevation={12} sx={cardItemDesign}><Card></Card></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
-          <Card elevation={12} sx={cardItemDesign}></Card>
+        <Container sx={itemsContainerDesign}>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
+          <Card elevation={12} sx={cardDesign}></Card>
         </Container>
       </Box>
 
       {/* Second Paper row */}
-      <Box boxShadow={"unset"} sx={paperBoxDesign}>
-        <Typography variant="h5" sx={paperBoxTitleDesign}>
+      <Box boxShadow={"unset"} sx={boxDesign}>
+        <Typography variant="h5" sx={accordionTitleDesign}>
           Items
         </Typography>
-        <Container sx={paperItemsContainerDesign}>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
-          <Paper elevation={12} sx={paperItemDesign}></Paper>
+        <Container sx={itemsContainerDesign}>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+        </Container>
+      </Box>
+      <Box boxShadow={"unset"} sx={boxDesign}>
+        <Typography variant="h5" sx={accordionTitleDesign}>
+          Items
+        </Typography>
+        <Container sx={itemsContainerDesign}>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
+          <Paper elevation={12} sx={paperDesign}></Paper>
         </Container>
       </Box>
 
